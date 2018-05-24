@@ -19,9 +19,9 @@ Route::get('tag/{tag}','PagesController@getTag');
 Route::get('author/{name}','PagesController@getAuthor');
 Route::get('search','PagesController@getSearch')->name('search');
 Route::get('contact.html','PagesController@getContact');
+Route::post('lienhe/send','PagesController@sendlienhe');
 Route::get('huongdan','PagesController@gethuongdan');
 Route::get('gioithieu','PagesController@getgioithieu');
-
 Route::get('login', 'LoginController@getLogin');
 Route::post('login', 'LoginController@postLogin')->name('login');
 Route::get('logout', 'LoginController@getLogout');
@@ -58,6 +58,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
        /*Group khachhang*/
        Route::prefix('khachhang')->group(function () {
         Route::get('/', 'khachhangController@getList')->name('list-khachhang');
+        Route::get('add', 'khachhangController@getAdd');
+        Route::post('add', 'khachhangController@Add');
+        Route::put('updatetrangthai', 'khachhangController@updateTrangthai');
+        Route::put('updateDealership', 'khachhangController@updateDealership');
+        Route::get('update/{id}', 'khachhangController@getUpdate');
+        Route::post('update/{id}', 'khachhangController@khachhangUpdate');
         Route::get('delete/{id}', 'khachhangController@getDelete');
     });
     
@@ -85,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
             Route::get('/', 'AdminController@getList')->name('list-author');
             Route::get('data', 'AdminController@dataTable')->name('data-author');
             Route::post('add', 'AdminController@postAdd');
+            Route::post('Edit', 'AdminController@postEdit');
             Route::delete('delete', 'AdminController@delete');
         });
     });
@@ -99,3 +106,6 @@ Route::prefix('khachhang')->group(function () {
         return view('news.pages.khachhang.camon');
     })->name('thanks');
 });
+Route::get('/demo', function () {
+    echo phpinfo(); 
+ });

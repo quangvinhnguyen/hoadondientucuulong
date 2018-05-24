@@ -102,6 +102,7 @@
 @section('script')
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#example').DataTable({'iDisplayLength': '50',"order": [[ 0, "desc" ]]});
         $('#modal-delete').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) 
           var iddel = button.data('id')

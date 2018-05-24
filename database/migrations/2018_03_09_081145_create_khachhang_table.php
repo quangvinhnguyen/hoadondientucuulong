@@ -22,6 +22,9 @@ class CreateKhachhangTable extends Migration
             $table->integer('dtdd')->nullable();
             $table->integer('dtb')->nullable();
             $table->string('email')->nullable();
+            $table->integer('trangthai')->nullable();
+            $table->integer('user_id')->nullable();
+
             $table->timestamps();
         });
     }

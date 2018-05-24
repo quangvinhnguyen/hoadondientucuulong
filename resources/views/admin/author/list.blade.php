@@ -19,6 +19,7 @@
                 <thead>
                     <tr class="text-center">
                         <th>ID</th>
+                        <th>ROLE</th>
                         <th>Tên</th>
                         <th>Email</th>
                         <th>Ngày Sinh</th>
@@ -46,13 +47,24 @@
             <form id="form-add">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="recipient-name" class="control-label">Tên</label>
+                    <label for="recipient-name" class="control-label">Tên đăng nhập</label>
                     <input type="text" class="form-control" id="authorname" name="authorname">
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="control-label">Email</label>
                     <input type="text" class="form-control" id="email" name="email">
                 </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Phân quyền </label>
+                    <select class="form-control" name="role" >
+                            <option disabled selected value> -- chọn quyền -- </option>
+                            <option value="admin">tối cao</option>
+                            <option value="dealership">Đại lý</option>
+                            <option value="author">chuyên viên</option>
+
+                    </select>
+                </div>
+               
                 <div class="form-group">
                     <label for="recipient-name" class="control-label">Mật Khẩu</label>
                     <input type="password" class="form-control" id="password" name="password">
@@ -67,6 +79,45 @@
   </div>
 </div>
 
+<!--MOdal Edit-->
+<div class="modal fade" id="show-edit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <form id="form-edit">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" id="edit-id">
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="editauthorname" name="authorname">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Email</label>
+                    <input type="text" class="form-control" id="editemail" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Phân quyền </label>
+                    <select class="form-control" name="role" id="editrole">
+                            <option value="admin">tối cao</option>
+                            <option value="dealership">Đại lý</option>
+                            <option value="author">chuyên viên</option>
+
+                    </select>
+                </div>
+               
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Mật Khẩu</label>
+                    <input type="password" class="form-control" id="editpassword" name="password">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
 <!-- Modal Delete-->
 <div class="modal fade" id="show-delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog" role="document">
@@ -103,6 +154,7 @@
             ajax: '{!! route('data-author') !!}',
             columns: [
                 { data: 'id', name: 'id' },
+                { data: 'role', name: 'role' },
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
                 { data: 'birthday', name: 'birthday' },
@@ -112,11 +164,78 @@
             ]
         });
         /* Bind cate name to modal*/
+        $('#show-edit').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var currentRow = button.closest("tr");
+            var id=currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+            var name=currentRow.find("td:eq(2)").text(); // get current row 3nd TD
+            var email=currentRow.find("td:eq(3)").text(); // get current row 3nd TD
+            var role=currentRow.find("td:eq(1)").text(); // get current row 3nd TD
+            var modal = $(this); 
+            modal.find('.modal-body #editauthorname').val(name);
+            modal.find('.modal-body #editemail').val(email);
+            modal.find('.modal-body #editrole').val(role);
+            modal.find('.modal-body #edit-id').val(id);
+        });
+         // Ajax edit
+         $("#form-edit").on( "submit", function( event ) {
+            event.preventDefault();
+            $.ajax({
+                url: 'admin/author/Edit',
+                type: 'Post',
+                data: $(this).serialize(),
+            })
+            .done(function(data) {
+                if(data==='ok'){
+                    datatable.ajax.reload();
+                    $('#show-edit').modal('hide');
+                    $.alert(" Thành Công",{
+                        autoClose: true,  closeTime: 3000, type: 'success',
+                        position: ['top-right', [45, 30]],
+                        withTime: 200,
+                        title: 'Thành Công', // title
+                        icon: 'glyphicon glyphicon-ok',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                    });
+                } else {
+                    datatable.ajax.reload();
+                    $('#show-edit').modal('hide');
+                    $.alert("Có Lỗi",{
+                        autoClose: true,  closeTime: 3000, type: 'danger',
+                        position: ['top-right', [50, 30]],
+                        withTime: 200,
+                        title: 'Có lỗi đã xảy ra.', // title
+                        icon: 'glyphicon glyphicon-remove',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                    });
+                }
+            })
+            .fail(function() {
+                datatable.ajax.reload();
+                    $('#show-edit').modal('hide');
+                    $.alert("Có Lỗi",{
+                        autoClose: true,  closeTime: 3000, type: 'danger',
+                        position: ['top-right', [50, 30]],
+                        withTime: 200,
+                        title: 'Có lỗi đã xảy ra.', // title
+                        icon: 'glyphicon glyphicon-remove',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                });
+            })
+           
+        });
+        /* Bind cate name to modal*/
         $('#show-delete').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             var currentRow = button.closest("tr");
             var id=currentRow.find("td:eq(0)").text(); // get current row 1st TD value
-            var name=currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+            var name=currentRow.find("td:eq(2)").text(); // get current row 3nd TD
             var modal = $(this);
             modal.find('.modal-body #del-name').html(name);
             modal.find('.modal-body #del-id').val(id);

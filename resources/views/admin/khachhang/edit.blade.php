@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">van ban
+                <h1 class="page-header">KHÁCH HÀNG 
                     <small>Cập nhật</small>
                 </h1>
             </div>
@@ -19,36 +19,49 @@
                 @endforeach
             </div>
             @endif
-            <form action="admin/vanban/update/{{$vanban->id}}" method="POST" enctype="multipart/form-data">
+            <form action="admin/khachhang/update/{{$kh->id}}" method="POST" enctype="multipart/form-data">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                <div class="form-group">
-                    <label>Số ký hiệu</label>
-                    <input type="text" name="sokh" id="sokh" class="form-control" value="{{ $vanban->sokh }}" placeholder="Nhập số ký hiệu ">
+                 <div class="form-group">
+                    <label><span>*</span>Mã số thuế</label>
+                    <input type="text" name="mast" id="mast" class="form-control" value="{{$kh->mast}}" placeholder="Nhập mã số thuế ">
                 </div>
                 <div class="form-group">
-                    <label>Trích yếu nội dung</label>
-                    <input type="text" name="trichyeunoidung" id="trichyeunoidung" class="form-control" value="{{ $vanban->trichyeunoidung }}">
+                    <label><span>*</span>Tên đơn vị </label>
+                    <input type="text" name="tendv" id="tendv" class="form-control" value="{{$kh->tendv}}" placeholder="Nhập tên đơn vị ">
                 </div>
                 <div class="form-group">
-                    <label>Ngày ban hành</label>
-                         <input type='text' class="form-control" id="datepicker" name="ngaybanhanh" value="{{ $vanban->ngaybanhanh }}"/>
+                    <label><span>*</span>Địa chỉ đăng ký kinh doanh </label>
+                         <input type='text' class="form-control"name="dcdkkd" value="{{$kh->dcdkkd}}"placeholder="Nhập địa chỉ đăng ký kinh doanh "/>
                 </div>
                 <div class="form-group">
-                    <label>Hình thức văn bản</label>
-                    <input type="text" name="hinhthucvanban" id="hinhthucvanban" class="form-control" value="{{$vanban->hinhthucvanban }}">
+                    <label><span>*</span>Người liên hệ</label>
+                    <input type="text" name="nguoilienhe" id="nguoilienhe" class="form-control" value="{{$kh->nguoilienhe}}">
                 </div>
                 <div class="form-group">
-                    <label>Cơ quan ban hành</label>
-                    <input type="text" name="coquanbanhanh" id="coquanbanhanh" class="form-control" value="{{ $vanban->coquanbanhanh}}">
+                    <label><span>*</span>Email</label>
+                    <input type="text" name="email" id="email" class="form-control" value="{{$kh->email}}">
                 </div>
                 <div class="form-group">
-                    <label>Người ký duyệt</label>
-                    <input type="text" name="nguoikyduyet" id="nguoikyduyet" class="form-control" value="{{ $vanban->nguoikyduyet}}">
+                    <label><span>*</span>Điện thoại di động</label>
+                    <input type="text" name="dtdd" id="dtdd" class="form-control" value="{{$kh->dtdd}}">
                 </div>
                 <div class="form-group">
-                    <label>Tài liệu đính kèm</label>
+                    <label>Điện thoại bàn</label>
+                    <input type="text" name="dtb" id="dtb" class="form-control" value="{{$kh->dtb}}">
+                </div> 
+                <div class="form-group">
+                    <label> trạng thái  </label>
+                    <select class="form-control" name="trangthai" id="trangthai">
+                                                    <option value="0">New</option>
+                                                    <option value="1">Đang tạo mẫu hóa đơn.</option>
+                                                    <option value="2">chốt mẫu tạo source.</option>
+                                                    <option value="3">cài đặt - đăng ký phát hành.</option>
+                                                    <option value="4">Đang sử dụng.</option>
+                                            </select>
+                <div class="form-group">
+                    <label>Tài liệu đính kèm (file logo hoặc file hóa đơn mẫu của đơn vị )</label>
                     <input type="file" name="tailieu" class="form-control" placeholder="">
-                </div>
+                </div> 
                 <button type="reset" class="btn btn-default">Làm Mới</button>
                 <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
             </form>
@@ -68,12 +81,9 @@
 <script>
             $(document).ready(
                     function () {
-                        $("#datepicker").datepicker({
-                            dateFormat: 'dd-mm-yy',
-                            changeMonth: true, //Tùy chọn này cho phép người dùng chọn tháng
-                            changeYear: true //Tùy chọn này cho phép người dùng lựa chọn từ phạm vi năm
-                        });
+                        $('#trangthai').val("{{$kh->trangthai}}");
                     }
+                   
             );
         </script>
 <link rel="stylesheet" type="text/css" href="css/select2.min.css">

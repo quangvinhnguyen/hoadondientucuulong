@@ -30,7 +30,7 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            @if(Auth::user()->role=='admin')
+            @if(Auth::user()->role=='admin'||'dealership')
             <li>
                 <a href="admin/category"><i class="fa fa-table fa-fw"></i> Chuyên Mục<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -71,14 +71,18 @@
                     <li>
                         <a href="admin/khachhang">Danh Sách</a>
                     </li>
+                    <li>
+                        <a href="admin/khachhang/add"> Thêm Khách Hàng</a>
+                    </li>
                    
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-
+            @if(Auth::user()->role=='admin')
             <li>
                 <a href="admin/author"><i class="fa fa-users fa-fw"></i> Quản lý Author</a>
             </li>
+            @endif
             @endif
         </ul>
     </div>

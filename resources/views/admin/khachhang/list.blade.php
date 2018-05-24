@@ -23,13 +23,13 @@
                     <thead>
                         <tr align="center">
                             <th>ID</th>
+                            <th>Đại lý</th>
                             <th>Mã số thuế</th>
                             <th>Tên đơn vị </th>
                             <th>Địa chỉ đăng ký kinh doánh</th>
                             <th>Người liên hệ</th>
-                            <th>Email</th>
-                            <th>Điện thoại di động</th>
-                            <th>Điện thoại bàn</th>
+                            <th>Trạng thái</th>
+                            <th>Mẫu</th>
                             <th> Hành động</th>
                         </tr>
                     </thead>
@@ -40,20 +40,34 @@
                         <tr class="odd gradeX">
                             <td>{{ $khachhang->id }}</td>
                             <td>
+                            <select class="form-control input-sm" id="dealerships" name="dealerships">
+                            <option value="">----Chọn Đại lý tiếp quản----</option>
+                            @foreach($dealerships as $dea)
+                                <option value="{{ $dea->id }}">{{ $dea->name }}</option>
+                            @endforeach
+                             </select>
+                                    </td>
+                            <td>
                                 {{ $khachhang->mast }}
                             </td>
                             <td>{{ $khachhang->tendv }}</td>
                             <td class="text-center">{{ $khachhang->dcdkkd }}</td>
                             <td>{{ $khachhang->nguoilienhe }}</td>
-                            <td>{{ $khachhang->email }}</td>
-                            <td>{{ $khachhang->dtdd }}</td>
-                            <td>{{ $khachhang->dtb }}</td>
                             <td>
-                                @if(Auth::user()->name == "admin")
-                                <a href="admin/khachhang/update/{{$khachhang->id}}" class="btn btn-info btn-sm">
+                            <select class="form-control input-sm" id="trangthai" name="trangthai">
+                                <option value="0">New</option>
+                                <option value="1">Đang tạo mẫu hóa đơn.</option>
+                                <option value="2">chốt mẫu tạo source.</option>
+                                <option value="3">cài đặt - đăng ký phát hành.</option>
+                                <option value="4">Đang sử dụng.</option>
+                             </select>
+                                    </td>
+                            <td><a onclick="window.location= '/{{ $khachhang->tailieu }}'; return false;" class="attach-file doc" href="/{{ $khachhang->tailieu }}"> xem </a>
+                            </td>
+                            <td>    
+                            <a href="admin/khachhang/update/{{$khachhang->id}}" class="btn btn-info btn-sm">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa 
                                 </a>
-                                @endif
                                 <button data-id="{{$khachhang->id}}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
                                     <i class="fa fa-trash" aria-hidden="true"></i> Xoá
                                 </button>
@@ -96,6 +110,54 @@
 @section('script')
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#example').DataTable({'iDisplayLength': '50',"order": [[ 0, "desc" ]]});
+        @if(Auth::user()->role=='admin')
+        $('.status').css('cursor', 'pointer');
+       $('#trangthai').val("{{$khachhang->trangthai}}");
+        /*Changer Status */
+        $('#trangthai').change(function(event) {
+            id = "{{$khachhang->id}}";
+            var status = $(this).val();
+            var div = $(this);
+            $.ajax({
+                url: 'admin/khachhang/updatetrangthai',
+                type: 'Put',
+                data: {"id": id,"status":status,"_token": "{{ csrf_token() }}"},
+            })
+            .done(function(data) {
+                if(data=='ok'){
+                    $.alert("Thay đổi thành công.",{
+                        autoClose: true,  closeTime: 3000, type: 'success',
+                        position: ['top-right', [45, 30]],
+                        withTime: 200,
+                        title: 'Thành Công',
+                        icon: 'glyphicon glyphicon-ok',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                    });
+                } else {
+                    $.alert(data,{
+                        autoClose: true,  closeTime: 3000, type: 'danger',
+                        position: ['top-right', [45, 30]],
+                        withTime: 200,
+                        title: 'Lỗi',
+                        icon: 'glyphicon glyphicon-ok',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                    });
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+        });
+
+    
+        @endif
+
+        //delete action
         $('#modal-delete').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) 
           var iddel = button.data('id')
