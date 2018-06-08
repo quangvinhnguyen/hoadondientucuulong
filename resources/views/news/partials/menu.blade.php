@@ -1,25 +1,22 @@
-<!-- Menu -->
-<header class="clearfix menu">
-	<a href="" class="pull-left"><img alt="" src="images/logo/newsmall.png"></a>
-	<nav id="main-menu" class="right navigation">
-		<ul class="sf-menu no-bullet inline-list m0">
-			<li><a href="gioithieu">Giới thiệu </a></li>
+
+<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<!-- <li><a href="#home" class="smoothScroll">Home</a></li>
+				<li><a href="#about" class="smoothScroll">About</a></li>
+				<li><a href="#screenshot" class="smoothScroll">Screenshots</a></li>
+                <li><a href="#pricing" class="smoothScroll">Pricing</a></li>
+                <li><a href="#newsletter" class="smoothScroll">Newsletter</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#modal1">Contact</a></li>
+			 -->
+				<li><a href="gioithieu"class="smoothScroll">Giới thiệu </a></li>
 			<li><a onclick="window.location= '/upload/filedowload/vHoadon4.5.5.376.zip'; return false;">Tải phần mềm</a></li>
 			@foreach ($categories as $cate)
 				<li>
-					<a href="category/{{ $cate->slug }}">{{ $cate->name }}</a>
+					<a class="smoothScroll" href="category/{{ $cate->slug }}">{{ $cate->name }}</a>
 	    		</li>
 			@endforeach
-			<li><a href="huongdan">Hướng dẫn</a></li>
-			<li><a href="http://118.69.187.103:8090">Tra cứu</a></li>
-    		<li><a href="contact.html">Liên Hệ</a></li>
-		</ul>
-	</nav>
-
-	<!-- <div class="search-bar left clearfix">
-		<form action="{{route('search')}}" method="get">
-			<input name="key" type="text" data-value="search" value="Tìm kiếm">
-			<input type="submit" value="">
-		</form>
-	</div> -->
-</header>
+			<li><a class="smoothScroll" href="huongdan">Hướng dẫn</a></li>
+			<li><a class="smoothScroll" href="http://118.69.187.103:8090">Tra cứu</a></li>
+    		<li><a class="smoothScroll" href="contact.html">Liên Hệ</a></li>
+			</ul>
+</div>

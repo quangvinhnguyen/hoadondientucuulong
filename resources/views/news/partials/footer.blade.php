@@ -1,77 +1,60 @@
-<footer id="footer" class="clearfix">
-	<!-- Footer widgets -->
-	<ul class="no-bullet clearfix">
-		<li class="widget four column">
-			<h3 class="widget-title">Thông Tin</h3>
-        	<div class="textwidget">
-        		<a href="https://visnam.com"><img alt="" src="images/logo/thiet-bi-giao-duc-visnam.png"></a>
-       		</div>
-		</li>
-		<li class="widget four column">
-			<h3 class="widget-title">Liên Hệ</h3>
-        	<div class="twitter-widget">
-        		<ul class="arrow-list">
-        			<li><a href="#">CÔNG TY CỔ PHẦN THƯƠNG MẠI VISNAM</a></li>
-        			<li><a href="#">33 Hải Hồ, P. Thanh Bình, Q. Hải Châu, TP Đà Nẵng.</a></li>	
-        			<li><a href="#">02367307666</a></li>
-        		</ul>
-        	</div>
-		</li>	
-		<li class="widget four column">
-			<h3 class="widget-title">Follow us</h3>
-			<ul class="no-bullet">
-				<li class="twitter">
-					<div class="btn">
-						<a href="https://twitter.com/nextWPthemes" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @nextWPthemes</a>
-						<script>
-						!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-						</script>
-					</div>
-				</li>
-				<li class="google_plus">
-					<div class="btn">
-						<!-- Place this tag where you want the +1 button to render. -->
-						<div class="g-plusone" data-size="medium"></div>
 
-						<!-- Place this tag after the last +1 button tag. -->
-						<script type="text/javascript">
-						  (function() {
-							var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-							po.src = 'https://apis.google.com/js/plusone.js';
-							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-						  })();
-						</script>
-					</div>
-				</li>
-				<li class="facebook">
-					<div class="btn">
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));
-						</script>
+<!-- Footer Section -->
 
-						<div class="fb-like" data-href="http://www.nextwpthemes.com/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-					</div>
-				</li>
-				<li class="pinterest">
-					<div class="btn">
-						<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fthemeforest.net%2Fitem%2Fnext-magazine-responsive-magazine-template%2F2576082&amp;media=http%3A%2F%2F1.s3.envato.com%2Ffiles%2F29793891%2Fscreenshots%2F00_preview.__large_preview.jpg&amp;description=Next+Magazine+-+Responsive+Magazine+Template" class="pin-it-button" count-layout="horizontal"><img alt="Pin It" border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-					</div>
-				</li>
-			</ul>
-		</li>
-	</ul>
-	<!-- End Footer widgets -->
+<footer>
+	<div class="container">
+		<div class="row">
+
+               <div class="col-md-8 col-sm-6">
+                    <div class="wow fadeInUp footer-copyright" data-wow-delay="0.4s">
+                         <p>Copyright &copy; 2016 Your App Starter
+                         <span>||</span> 
+                         Design: <a href="https://plus.google.com/+templatemo" title="free css templates" target="_blank">Templatemo</a></p>
+                    </div>
+               </div>
+
+			<div class="col-md-4 col-sm-6">
+				<ul class="wow fadeInUp social-icon" data-wow-delay="0.8s">
+                         <li><a href="#" class="fa fa-facebook"></a></li>
+                         <li><a href="#" class="fa fa-twitter"></a></li>
+                         <li><a href="#" class="fa fa-google-plus"></a></li>
+                         <li><a href="#" class="fa fa-dribbble"></a></li>
+                         <li><a href="#" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+			
+		</div>
+	</div>
+</footer>
+
+
+<!-- Modal Contact -->
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+      <div class="modal-content modal-popup">
+          <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h2 class="modal-title">Contact Form</h2>
+          </div>
+
+               <form action="#" method="post">
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
+                 	<input name="email" type="email" class="form-control" id="email" placeholder="Email Address" required>
+                 	<textarea name="message" rows="3" class="form-control" id="message" placeholder="Message" required></textarea>
+                    <input name="submit" type="submit" class="form-control" id="submit" value="Send Message">
+               </form>
+          </div>
+     </div>
+</div>
+
+
+<!-- Back top -->
+
+<a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
 
 	<div class="copyright ">
 	© Design by vinhnq@visnam.com
 	</div>
 
-	<div id="back-to-top" class="right">
-		<a href="#top">Back to Top</a>
-	</div>
-</footer>
+	

@@ -91,11 +91,12 @@ class khachhangController extends Controller
     {   if(Auth::user()->role=='admin'){
         $dealerships =Admin::where('role','=','dealership')->get();
         $khachhangs = khachhang::all();
+        return view('admin.khachhang.list',['khachhangs'=>$khachhangs,'dealerships'=>$dealerships]);
     }
         if(Auth::user()->role=='dealership'){
             $khachhangs = khachhang::where('user_id',Auth::user()->id)->get();
-        } 
-            return view('admin.khachhang.list',['khachhangs'=>$khachhangs,'dealerships'=>$dealerships]);
+            return view('admin.khachhang.list',['khachhangs'=>$khachhangs]);
+        }
     }
    //updateTrangthai
    public function updateTrangthai(Request $request )

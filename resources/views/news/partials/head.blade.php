@@ -1,18 +1,30 @@
 <head>
-	<meta charset="utf-8">
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<title>Hóa đơn điện tử  @yield('title')</title>
-	<base href="{{ asset('') }}"></base>
-	<link rel="shortcut icon" href="images/logo/1117.png" type="image/x-icon">
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/foundation.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/hover.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+<title>App Starter HTML CSS Website Template</title>
+<!--
+App Starter Template
+http://www.templatemo.com/tm-492-app-starter	
+-->
+<link rel="stylesheet" href="client_asset/css/bootstrap.min.css">
+<link rel="stylesheet" href="client_asset/css/animate.css">
+<link rel="stylesheet" href="client_asset/css/font-awesome.min.css">	
+<link rel="stylesheet" href="client_asset/css/magnific-popup.css">
+<link rel="stylesheet" href="client_asset/css/owl.theme.css">
+<link rel="stylesheet" href="client_asset/css/owl.carousel.css">
+
+<link href='https://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+
+<!-- Main css -->
+<link rel="stylesheet" href="client_asset/css/style.css">
+
+
 </head>

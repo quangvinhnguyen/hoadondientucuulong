@@ -23,7 +23,9 @@
                     <thead>
                         <tr align="center">
                             <th>ID</th>
+                            @if(Auth::user()->role=='admin')  
                             <th>Đại lý</th>
+                            @endif
                             <th>Mã số thuế</th>
                             <th>Tên đơn vị </th>
                             <th>Địa chỉ đăng ký kinh doánh</th>
@@ -39,6 +41,7 @@
                         @foreach($khachhangs as $khachhang)
                         <tr class="odd gradeX">
                             <td>{{ $khachhang->id }}</td>
+                            @if(Auth::user()->role=='admin')  
                             <td>
                             <select class="form-control input-sm" id="dealerships" name="dealerships">
                             <option value="">----Chọn Đại lý tiếp quản----</option>
@@ -47,6 +50,7 @@
                             @endforeach
                              </select>
                                     </td>
+                            @endif
                             <td>
                                 {{ $khachhang->mast }}
                             </td>
@@ -114,6 +118,7 @@
         @if(Auth::user()->role=='admin')
         $('.status').css('cursor', 'pointer');
        $('#trangthai').val("{{$khachhang->trangthai}}");
+       $('#dealerships').val("{{$khachhang->user_id}}");
         /*Changer Status */
         $('#trangthai').change(function(event) {
             id = "{{$khachhang->id}}";
@@ -154,7 +159,46 @@
             })
         });
 
-    
+    /*Changer dealership */
+    $('#dealerships').change(function(event) {
+            id = "{{$khachhang->id}}";
+            var dearship = $(this).val();
+            var div = $(this);
+            $.ajax({
+                url: 'admin/khachhang/updateDealership',
+                type: 'Put',
+                data: {"id": id,"dearship":dearship,"_token": "{{ csrf_token() }}"},
+            })
+            .done(function(data) {
+                if(data=='ok'){
+                    $.alert("Thay đổi thành công.",{
+                        autoClose: true,  closeTime: 3000, type: 'success',
+                        position: ['top-right', [45, 30]],
+                        withTime: 200,
+                        title: 'Thành Công',
+                        icon: 'glyphicon glyphicon-ok',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                    });
+                } else {
+                    $.alert(data,{
+                        autoClose: true,  closeTime: 3000, type: 'danger',
+                        position: ['top-right', [45, 30]],
+                        withTime: 200,
+                        title: 'Lỗi',
+                        icon: 'glyphicon glyphicon-ok',
+                        animation: true,
+                        animShow: 'fadeIn',
+                        animHide: 'fadeOut',
+                    });
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+        });
+
         @endif
 
         //delete action

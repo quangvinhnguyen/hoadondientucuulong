@@ -1,36 +1,43 @@
+
 <!doctype html>
 <html lang="en">
 @include('news.partials.head')
-<body>
-	<!-- Header -->
-	@include('news.partials.header')
-	<!-- End Header -->
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<!-- PRE LOADER -->
+<!-- Navigation Section -->
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">	
+		@include('news.partials.header')
 
-	<!-- Container -->
-	<section class="container row ">
-		<!-- Menu top -->
 		@include('news.partials.menu')
-		<!-- Inner Container -->
-		<section class="inner-container clearfix">
+	</div>
+</div>
+		<!-- Home Section -->
 
-			<!-- Content -->
-			<section id="content" class="eight column row pull-left">
+		<section id="home" class="main">
+
+	
 				@yield('content')
+				
 			</section>
 			<!-- End Content -->
 
 			<!-- Sidebar -->
 			@include('news.partials.sidebar')
 			<!-- End Sidebar -->
+
+			<!-- Footer -->
+			
+
 		</section>
 		<!-- End Inner Container -->
 	</section>
 	<!-- End Container -->
-
-			<!-- Footer -->
-			@include('news.partials.footer')
+	@include('news.partials.footer')
 			<!-- End Footer -->
 	<!-- Import js -->
 	@include('news.partials.importjs')
+	@yield('js')
 </body>
+
 </html>

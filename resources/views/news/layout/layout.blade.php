@@ -1,14 +1,40 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 @include('news.partials.head')
 <body>
-	<!-- Header -->
 	@include('news.partials.header')
-	<!-- End Header -->
-	<!-- Container -->
+	
 	<section class="container row clearfix">
-		<!-- Menu top -->
 		@include('news.partials.menu')
+		<section class="inner-container ">
+			<section id="content" class="eight column row pull-left">
+				@include('news.partials.slide')
+				@yield('content')
+				
+			</section>
+			@include('news.partials.sidebar')
+		</section>
+	</section>
+	@include('news.partials.footer')
+	@include('news.partials.importjs')
+	@yield('js')
+</body>
+</html> -->
+
+
+<!doctype html>
+<html lang="en">
+@include('news.partials.head')
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<!-- PRE LOADER -->
+<!-- Navigation Section -->
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">	
+		@include('news.partials.header')
+
+		@include('news.partials.menu')
+	</div>
+</div>
 		<!-- Inner Container -->
 		<section class="inner-container ">
 
@@ -40,4 +66,5 @@
 	@include('news.partials.importjs')
 	@yield('js')
 </body>
+
 </html>

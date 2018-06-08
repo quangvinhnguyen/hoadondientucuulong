@@ -1,13 +1,10 @@
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.superfish.js"></script>
-<script type="text/javascript" src="js/jquery.flexslider.min.js"></script>
-<script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="fancybox/jquery.easing-1.3.pack.js"></script>
-<script type="text/javascript" src="js/jcarousel.js"></script>
-<script type="text/javascript" src="js/jquery.masonry.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$('#main-menu ul li a').filter(function(){return this.href==location.href}).addClass('active');
-	})
-</script>
+<!-- SCRIPTS -->
+
+<script src="client_asset/js/jquery.js"></script>
+<script src="client_asset/js/bootstrap.min.js"></script>
+<script src="client_asset/js/jquery.magnific-popup.min.js"></script>
+<script src="client_asset/js/magnific-popup-options.js"></script>
+<script src="client_asset/js/owl.carousel.min.js"></script>
+<script src="client_asset/js/smoothscroll.js"></script>
+<script src="client_asset/js/wow.min.js"></script>
+<script src="client_asset/js/custom.js"></script>
