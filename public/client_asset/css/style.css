@@ -22,7 +22,7 @@ body {
 
 h1,h2,h3,h4,h5,h6,
 .navbar-default, .btn {
-  font-family: 'Unica One', cursive;
+  /* font-family: 'Unica One', cursive; */
   font-weight: 400;
 }
 
@@ -321,7 +321,7 @@ a:hover, a:active, a:focus {
 }
 
 #home .section-btn {
-  background: #1dc9e3;
+  background: #97090c;
 }
 
 #home .section-btn:hover {
@@ -571,7 +571,7 @@ footer p {
 -----------------------------------------*/
 
 .modal-dialog .modal-content {
-  background-color: #535bd4;
+  background-color: #cb171e;
   border: none;
   border-radius: 2px;
   text-align: center;

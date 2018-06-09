@@ -61,7 +61,4 @@
     </div>
     <!-- /.row -->
 </div>
-<!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
 @endsection
